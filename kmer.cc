@@ -11,7 +11,7 @@
 static size_t const USIZE = 1 << (2 * 12);
 
 // k-mer length
-static size_t K = 9;
+static size_t K = 4;
 static size_t SIZE = 1 << (2 * K); // 4 ^ K
 
 
@@ -184,6 +184,7 @@ int main(int argc, char *argv[])
             // last character of the string is \n
             accumulate(string, read - 1);
         } // if
+        free(string);
     } // while
     normalize();
 

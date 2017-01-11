@@ -1,6 +1,6 @@
 CXX          = g++
 LDFLAGS      = -Iinclude
-CXXFLAGS     = -pedantic -Wall -Wextra -march=native -mcmodel=medium
+CXXFLAGS     = -pedantic -Wall -Wextra -march=native
 DEBUGFLAGS   = -O0 -ggdb3
 RELEASEFLAGS = -O3 -DNDEBUG
 PROFILEFLAGS = $(RELEASFLAGS) -pg
