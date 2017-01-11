@@ -15,13 +15,7 @@ all other characters from `A`, `C`, `G`, `T`).
 
 - `make` with the correct `K` (line 13; `kmer.cc`);
 - NB use `release` build;
-- use streaming processing: `./preproc.sh -k 4 SRR043348_1.fastq.gz | ./kmer > model.bin`.
-
-## Loading a model
-
-```
-./kmer < model.bin
-```
+- use streaming processing: `./preproc.sh -k 4 SRR043348_1.fastq.gz | ./kmer 4 > model.bin`.
 
 ## Comparing models
 

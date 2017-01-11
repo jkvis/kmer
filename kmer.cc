@@ -7,14 +7,18 @@
 #include <cstdio>
 
 
-// k-mer length; tested up-to 13; approx 1.6GB static data
-static size_t const K = 4;
-static size_t const SIZE = 1 << (2 * K); // 4 ^ K
+ // Global size fitting in small memory model for k-mers upto 12
+static size_t const USIZE = 1 << (2 * 12);
+
+// k-mer length
+static size_t K = 9;
+static size_t SIZE = 1 << (2 * K); // 4 ^ K
+
 
 // Count table
-static size_t count[SIZE][4] = {{0}};
+static size_t count[USIZE][4] = {{0}};
 // Probability table
-static double prob[SIZE][4];
+static double prob[USIZE][4];
 
 
 // Symbolic constants used for printing
@@ -151,8 +155,23 @@ static inline void read_model(void)
 
 
 // Entry point
-int main(int, char* [])
+int main(int argc, char *argv[])
 {
+    if (argc < 2)
+    {
+        fprintf(stderr, "usage: %s K\n", argv[0]);
+        return EXIT_FAILURE;
+    } // if
+
+    K = atoi(argv[1]);
+    SIZE = 1 << (2 * K); // 4 ^ K
+
+    if (K > 12)
+    {
+        fprintf(stderr, "K = %ld is too large\n", K);
+        return EXIT_FAILURE;
+    } // if
+
     ssize_t read = 0;
     while (read != -1)
     {
