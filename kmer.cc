@@ -458,16 +458,21 @@ int main(int argc, char *argv[])
                 size_t const len = strlen(here + 1) - 1;
                 double const norm = accumulateN(here, len);
 
-                //normalize(count, prob);
-                double const v_g = compare(prob_g, count) / norm;
-                double const v_e = compare(prob_e, count) / norm;
-                //double const v_s = compare(prob, count) / norm;
-
-                if (v_e > v_g)
+                if (norm > 0.0)
                 {
-                    printf("%s", string);
-                } // if
+                    //normalize(count, prob);
+                    double const v_g = compare(prob_g, count) / norm;
+                    double const v_e = compare(prob_e, count) / norm;
+                    //double const v_s = compare(prob, count) / norm;
 
+                    if (v_e > v_g)
+                    {
+                        fputc('>', stdout);
+                        fwrite(string, sizeof(string[0]), here - string, stdout);
+                        fputc('\n', stdout);
+                        fputs(here + 1, stdout);
+                    } // if
+                } // if
             } // if
         } // if
         free(string);
