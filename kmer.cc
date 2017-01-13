@@ -26,19 +26,26 @@ static char const ALPHA[4] =
 {
     'A',
     'C',
-    'T',
-    'G'
+    'G',
+    'T'
 }; // ALPHA
 
 
-// Map a DNA base to an index (bitwise magic)
+// Map a DNA base to an index (trivial)
 static inline size_t to_idx(char const ch)
 {
-    // A -> 00 (0)
-    // C -> 01 (1)
-    // G -> 11 (3) NB: different order
-    // T -> 10 (2)
-    return (ch >> 1) & 3;
+    switch (ch)
+    {
+        case 'A':
+            return 0;
+        case 'C':
+            return 1;
+        case 'G':
+            return 2;
+        case 'T':
+            return 3;
+    } // switch
+    return 0;
 } // to_idx
 
 
