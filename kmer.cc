@@ -138,14 +138,14 @@ static inline void print_prob(void)
 // Save a probability table in binary form to stdout
 static inline size_t write_model(void)
 {
-    return fwrite(prob[0], sizeof(prob[0][0]), SIZE * 4, stdout);
+    return fwrite(count[0], sizeof(count[0][0]), SIZE * 4, stdout);
 } // write_model
 
 
 // Load a probability table in binary form from stdin
 static inline void read_model(void)
 {
-    size_t const read = fread(prob, sizeof(prob[0][0]), SIZE * 4, stdin);
+    size_t const read = fread(count, sizeof(count[0][0]), SIZE * 4, stdin);
     if (read != SIZE * 4)
     {
         fprintf(stderr, "fread failed\n");
@@ -186,10 +186,10 @@ int main(int argc, char *argv[])
         } // if
         free(string);
     } // while
-    normalize();
+    //normalize();
 
     // Do *NOT* use for large K
-    print_prob();
+    //print_prob();
 
     write_model();
     return EXIT_SUCCESS;
