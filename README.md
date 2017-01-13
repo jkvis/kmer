@@ -21,3 +21,7 @@ all other characters from `A`, `C`, `G`, `T`).
 
 All functions are available in `kmer.cc`.
 
+```
+zcat /exports/lgtc/projects/2016-07-06_exome-genome/genome/8503_R1.fastq.gz | awk '{if(++count%4==1) printf "%s|", $0; else if(count%4==2) print $1;}' | ./kmer 3 counts/genome_3.bin counts/exome_3.bin | gzip > 8503_R1_select3.fasta.gz
+```
+

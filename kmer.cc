@@ -452,7 +452,7 @@ int main(int argc, char *argv[])
         if (read > 0)
         {
             clear();
-            char *here = string; // strchr(string, '|');
+            char *here = strchr(string, '|');
             if (here != 0)
             {
                 size_t const len = strlen(here + 1) - 1;
