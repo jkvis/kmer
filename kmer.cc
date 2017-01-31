@@ -468,7 +468,7 @@ int main(int argc, char *argv[])
                     if (v_e > v_g)
                     {
                         fputc('>', stdout);
-                        fwrite(string, sizeof(string[0]), here - string, stdout);
+                        fwrite(string + 1, sizeof(string[0]), here - string - 1, stdout);
                         fputc('\n', stdout);
                         fputs(here + 1, stdout);
                     } // if
